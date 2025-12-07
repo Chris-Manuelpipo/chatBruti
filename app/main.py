@@ -17,7 +17,6 @@ from app.config import (
     GROQ_API_KEY, GROQ_MODEL, CHAT_TEMPERATURE, CHAT_MAX_TOKENS,
     CHAT_TOP_P, CHAT_BRUTI_SYSTEM_PROMPT, AUTO_SCRAPE_ON_STARTUP
 )
-
 from app.modules.scraper import WebScraper, TextChunker, JSONExporter
 from app.modules.semantic_search import SemanticSearch
 # from app.modules.chat_generator import ChatBrutiGenerator  # On n'utilise plus la classe
@@ -36,6 +35,23 @@ app = FastAPI(
     version=API_VERSION,
     description=API_DESCRIPTION,
 )
+
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "*",  # ou ton domaine précis pour plus de sécurité
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 
 # Variables globales
 semantic_search: Optional[SemanticSearch] = None
