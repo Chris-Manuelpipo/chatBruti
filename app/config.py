@@ -31,6 +31,7 @@ BOOST_KEYWORDS = [
 
 # Chat-Bruti Configuration
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+print("cle :",GROQ_API_KEY)
 GROQ_MODEL = "llama-3.3-70b-versatile"
 CHAT_TEMPERATURE = 1.5
 CHAT_MAX_TOKENS = 200
